@@ -5,9 +5,10 @@ const mongoose = require('mongoose');
 const app = express();
 
 const indexRoutes = require('./routes/api');
+const { db } = require('./config');
 
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost:27017/interclub-challenge', { useMongoClient: true });
+mongoose.connect(db, { useMongoClient: true });
 
 app.use('/api', indexRoutes);
 

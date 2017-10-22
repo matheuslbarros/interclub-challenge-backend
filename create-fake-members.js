@@ -2,12 +2,13 @@ const faker = require('faker');
 const mongoose = require('mongoose');
 
 const MemberModel = require('./models/member');
+const { db } = require('./config');
 
 const amountMembers = 10;
 const memberPromises = [];
 
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost:27017/interclub-challenge', { useMongoClient: true });
+mongoose.connect(db, { useMongoClient: true });
 
 console.log('Creating fake members...');
 
