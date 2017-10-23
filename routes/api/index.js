@@ -8,8 +8,19 @@ router.get('/aye', (req, res) => {
 });
 
 router.get('/list-members', (req, res) => {
+    var search = req.query.search;
+
+    var filterString = { $regex: new RegExp(search, "i") };
+    var filterNumber = { $eq: parseInt(search) || 0 };
+    
     MemberModel
-        .find({})
+        .find({
+            $or: [
+                { first_name: filterString },
+                { last_name: filterString },
+                { number: filterNumber },
+            ]
+        })
         .sort({number: 1})
         .then(members => {
             const mappedMembers = members.map(member => {
