@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
@@ -10,6 +11,7 @@ const { db } = require('./config');
 mongoose.Promise = Promise;
 mongoose.connect(db, { useMongoClient: true });
 
+app.use(cors());
 app.use('/api', indexRoutes);
 
 app.use('*', (req, res) => {
