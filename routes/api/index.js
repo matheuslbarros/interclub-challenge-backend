@@ -28,6 +28,10 @@ router.get('/list-members', (req, res) => {
                     id: member._id,
                     first_name: member.first_name,
                     last_name: member.last_name,
+                    photo: member.photo,
+                    address: member.address,
+                    phone: member.phone,
+                    email: member.email,
                     number: member.number
                 };
             });

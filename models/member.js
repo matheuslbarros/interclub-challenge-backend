@@ -9,6 +9,10 @@ const MemberSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    photo: String,
+    address: String,
+    phone: String,
+    email: String,
     number: Number
 });
 

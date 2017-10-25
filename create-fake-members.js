@@ -33,6 +33,10 @@ function createFakeMember(iterator) {
     return new MemberModel({
         first_name: faker.name.firstName(),
         last_name: faker.name.lastName(),
+        photo: faker.image.avatar(),
+        address: faker.address.streetAddress() + ", " + faker.address.city() + ", " + faker.address.state() + ", " + faker.address.countryCode(),
+        phone: faker.phone.phoneNumber(),
+        email: faker.internet.email(),
         number: iterator + 1
     }).save();
 }
